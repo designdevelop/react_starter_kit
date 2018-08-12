@@ -1,16 +1,14 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import reducers from './reducers';
-import promise from 'redux-promise';
 import App from './App';
-
-const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
+import { PersistGate } from 'redux-persist/integration/react'
+import {store, persistor} from './configureStore.js';
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App/>
-  </Provider>
-  , document.querySelector('#root'));
+	<Provider store = {store}>
+		<PersistGate loading={null} persistor={persistor}>
+			<App/>
+		</PersistGate>
+	</Provider>
+, document.getElementById('root'));

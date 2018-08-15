@@ -3,7 +3,7 @@ import Login from './containers/login';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 import './App.css';
-import Nav from './containers/nav';
+import Main from './containers/main';
 
 const MainComponent = () =>(
     <div>MainComponent</div>
@@ -37,7 +37,7 @@ class App extends Component {
 			<div className="App">
 				<Router>
 					<div>
-						<PrivateRoute exact path="/main" authed={this.props.store.auth.signature} component={Nav}/>
+						<PrivateRoute path="/main" authed={this.props.store.auth.signature} component={Main}/>
 						<Route exact path="/" component={Login}/>
 					</div>
 		 		</Router>

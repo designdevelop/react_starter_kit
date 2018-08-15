@@ -26,15 +26,13 @@ class Nav extends Component {
     	return this.props.navList.map((item, idx) => {
     		return (
     			<li key={idx}>
-    				<Link to={item.path}>{item.title}</Link>
+    				<Link to={`${this.props.match.path}/${item.path}`}>{item.title}</Link>
 				</li>
 			);
     	})
     }
 
     render() {
-
-        console.log("location : ", this.props);
 
 
     	if(this.props.navList.length === 0){
@@ -47,9 +45,9 @@ class Nav extends Component {
     		        <ul>
     		        	{this.navRender()}
     		        </ul>
-                    <Route path="/nav1" component={Component1}/>
-                    <Route path="/nav2" component={Component2}/>
-                    <Route path="/nav3" component={Component3}/>
+                    <Route path={`${this.props.match.path}/nav1`} component={Component1}/>
+                    <Route path={`${this.props.match.path}/nav2`} component={Component2}/>
+                    <Route path={`${this.props.match.path}/nav3`} component={Component3}/>
                 </div>
             </Router>
         );
